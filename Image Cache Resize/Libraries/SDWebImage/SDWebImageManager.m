@@ -398,6 +398,7 @@ static SDWebImageManager *instance;
     {
         CGRect bounds = CGRectFromString([downloader.userInfo objectForKey:@"bounds"]);
         image = [image croppedImage:bounds];
+        downloader.imageData = [UIImagePNGRepresentation(image) copy];
     }
     else
     {
@@ -420,7 +421,7 @@ static SDWebImageManager *instance;
             {
                 image = [image resizedImage:size interpolationQuality:kCGInterpolationHigh];
             }
-            
+            downloader.imageData = [UIImagePNGRepresentation(image) copy];
             
         }
     }

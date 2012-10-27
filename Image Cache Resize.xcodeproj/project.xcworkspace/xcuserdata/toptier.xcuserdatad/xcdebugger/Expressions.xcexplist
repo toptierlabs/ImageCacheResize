@@ -3,10 +3,21 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[SDWebImageManager imageDownloader:didFinishWithImage:]:SDWebImageManager.m">
+      </ContextState>
+      <ContextState
          contextName = "-[SDWebImageManager imageCache:didNotFindImageForKey:userInfo:]:SDWebImageManager.m">
          <PersistentStrings>
             <PersistentString
                value = "info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SDImageCache storeImage:imageData:forKey:toDisk:]:SDImageCache.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "data">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

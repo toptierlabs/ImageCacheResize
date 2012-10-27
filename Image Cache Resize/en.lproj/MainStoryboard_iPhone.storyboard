@@ -41,7 +41,7 @@
                                             <constraint firstAttribute="width" constant="135" id="nWX-8D-oBC"/>
                                             <constraint firstAttribute="height" constant="21" id="zMM-SE-hYy"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -50,15 +50,16 @@
                                             <constraint firstAttribute="height" constant="21" id="4rt-tg-Jqd"/>
                                             <constraint firstAttribute="width" constant="135" id="wpX-zt-QTW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cropped to  match ratio of image view" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZg-Fb-asy">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LI0-Tf-zDp"/>
+                                            <constraint firstAttribute="width" constant="174" id="pCj-lT-LYN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -66,26 +67,26 @@
                                 <constraints>
                                     <constraint firstItem="Y1V-Sl-mHQ" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="601" id="3Co-Wb-Kwc"/>
                                     <constraint firstItem="pEH-fI-rvO" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3pE-0Y-Dt5"/>
-                                    <constraint firstItem="gZg-Fb-asy" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="6" id="66x-mS-xwn"/>
-                                    <constraint firstAttribute="trailing" secondItem="YeZ-Fc-M72" secondAttribute="trailing" constant="162" id="6C9-Qr-R5E"/>
-                                    <constraint firstItem="vtT-sb-w1Q" firstAttribute="centerX" secondItem="gZg-Fb-asy" secondAttribute="centerX" type="default" id="8DG-MF-Owj"/>
+                                    <constraint firstItem="gZg-Fb-asy" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="146" id="CRO-o4-xOD"/>
                                     <constraint firstItem="pEH-fI-rvO" firstAttribute="trailing" secondItem="0DI-6P-edh" secondAttribute="trailing" type="default" id="FtB-DJ-4Zo"/>
-                                    <constraint firstItem="YeZ-Fc-M72" firstAttribute="trailing" secondItem="Y1V-Sl-mHQ" secondAttribute="trailing" type="default" id="GT5-NG-r2i"/>
-                                    <constraint firstItem="glA-QW-M0i" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="GbU-Zt-s1h"/>
+                                    <constraint firstItem="glA-QW-M0i" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="238" id="JuZ-hH-os1"/>
+                                    <constraint firstItem="YeZ-Fc-M72" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="391" id="KfH-xR-eYJ"/>
+                                    <constraint firstItem="YeZ-Fc-M72" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="257" id="Q8e-MU-1XM"/>
                                     <constraint firstAttribute="bottom" secondItem="0DI-6P-edh" secondAttribute="bottom" constant="90" id="Rw7-tW-t3Q"/>
                                     <constraint firstItem="pEH-fI-rvO" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="187" id="SHu-cf-n0d"/>
-                                    <constraint firstItem="YeZ-Fc-M72" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="317" id="WlX-tg-nOc"/>
                                     <constraint firstItem="pEH-fI-rvO" firstAttribute="trailing" secondItem="vtT-sb-w1Q" secondAttribute="trailing" type="default" id="bh6-gn-ZbI"/>
-                                    <constraint firstItem="0DI-6P-edh" firstAttribute="top" secondItem="YeZ-Fc-M72" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gWC-5l-eFe"/>
                                     <constraint firstItem="0DI-6P-edh" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="h4T-TJ-NF9"/>
+                                    <constraint firstItem="glA-QW-M0i" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="210" id="jPA-gK-lM1"/>
                                     <constraint firstItem="vtT-sb-w1Q" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="28" id="krg-lj-oY9"/>
                                     <constraint firstItem="Y1V-Sl-mHQ" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="o8x-8d-Uc4"/>
+                                    <constraint firstItem="gZg-Fb-asy" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="73" id="ok1-Tq-Wxb"/>
                                     <constraint firstItem="vtT-sb-w1Q" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="pqh-IT-vke"/>
-                                    <constraint firstItem="glA-QW-M0i" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="164" id="yM1-ur-Gh6"/>
+                                    <constraint firstItem="gZg-Fb-asy" firstAttribute="trailing" secondItem="5fn-df-IDb" secondAttribute="trailing" type="default" id="wEm-l2-fRB"/>
+                                    <constraint firstItem="0DI-6P-edh" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="346" id="y0q-38-uCZ"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5fn-df-IDb" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="aI4-C1-gkh"/>
                             <constraint firstItem="5fn-df-IDb" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="kOS-IK-Zd6"/>
