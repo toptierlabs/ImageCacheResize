@@ -14,79 +14,74 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5fn-df-IDb">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgT-nc-Ne6">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="pEH-fI-rvO">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="119" id="CJQ-Y3-bBV"/>
-                                            <constraint firstAttribute="height" constant="112" id="edx-bS-Q56"/>
+                                            <constraint firstAttribute="height" constant="112" id="x3d-KL-cty"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pBY-sl-9ZB">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="0DI-6P-edh">
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="112" id="ApU-5G-1be"/>
-                                            <constraint firstAttribute="width" constant="119" id="HPB-EO-AFH"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pEH-fI-rvO">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="71" id="Ilq-ag-Boc"/>
-                                            <constraint firstAttribute="width" constant="151" id="aZe-9d-n1W"/>
-                                        </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kAl-Ht-bBz">
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="138" id="7a3-Sk-iid"/>
-                                            <constraint firstAttribute="height" constant="122" id="lBF-0u-84U"/>
+                                            <constraint firstAttribute="height" constant="112" id="QDa-U2-sal"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1V-Sl-mHQ">
                                         <constraints>
                                             <constraint firstAttribute="height" constant="122" id="Mfg-7t-ogw"/>
-                                            <constraint firstAttribute="width" constant="138" id="hdu-w8-95t"/>
+                                            <constraint firstAttribute="width" constant="138" id="vmN-Mg-gq2"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtT-sb-w1Q">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="vtT-sb-w1Q">
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="138" id="7LS-HP-gJB"/>
-                                            <constraint firstAttribute="height" constant="122" id="HUC-Cr-Pb3"/>
+                                            <constraint firstAttribute="width" constant="119" id="K8J-GB-PPK"/>
+                                            <constraint firstAttribute="height" constant="112" id="x7b-1h-3Rh"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Resize" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BAn-1S-oEv">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Resized Image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glA-QW-M0i">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="nWX-8D-oBC"/>
+                                            <constraint firstAttribute="height" constant="21" id="zMM-SE-hYy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Resize+Crop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMa-sC-oW5">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Original" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YeZ-Fc-M72">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="4rt-tg-Jqd"/>
+                                            <constraint firstAttribute="width" constant="135" id="wpX-zt-QTW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Crop" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rP-Wm-kwa">
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Cropped to  match ratio of image view" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZg-Fb-asy">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="LI0-Tf-zDp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="pEH-fI-rvO" firstAttribute="top" secondItem="vtT-sb-w1Q" secondAttribute="top" type="default" id="0Bj-HO-ZRA"/>
                                     <constraint firstItem="Y1V-Sl-mHQ" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="601" id="3Co-Wb-Kwc"/>
-                                    <constraint firstItem="pEH-fI-rvO" firstAttribute="leading" secondItem="vtT-sb-w1Q" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="4fq-dp-sDe"/>
-                                    <constraint firstAttribute="bottom" secondItem="kAl-Ht-bBz" secondAttribute="bottom" constant="-33" id="7O9-1N-7bB"/>
-                                    <constraint firstItem="6rP-Wm-kwa" firstAttribute="leading" secondItem="vtT-sb-w1Q" secondAttribute="leading" type="default" id="7xD-QH-qlx"/>
-                                    <constraint firstItem="VMa-sC-oW5" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="197" id="8fU-9g-xuG"/>
-                                    <constraint firstItem="vtT-sb-w1Q" firstAttribute="top" secondItem="BAn-1S-oEv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="HRf-Wm-ibO"/>
-                                    <constraint firstItem="kAl-Ht-bBz" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="162" id="Jz3-IC-8aZ"/>
-                                    <constraint firstItem="kAl-Ht-bBz" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="459" id="PbC-Sr-cVX"/>
-                                    <constraint firstItem="BAn-1S-oEv" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="12" id="T38-ql-7ix"/>
-                                    <constraint firstAttribute="trailing" secondItem="kAl-Ht-bBz" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="VTV-iY-pOd"/>
-                                    <constraint firstItem="6rP-Wm-kwa" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="437" id="WaZ-Yf-qhw"/>
-                                    <constraint firstItem="vgT-nc-Ne6" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="299" id="cQX-3u-eCj"/>
-                                    <constraint firstItem="VMa-sC-oW5" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="eCo-r8-Vae"/>
-                                    <constraint firstItem="VMa-sC-oW5" firstAttribute="centerX" secondItem="vgT-nc-Ne6" secondAttribute="centerX" type="default" id="gw9-F9-gEh"/>
-                                    <constraint firstItem="pBY-sl-9ZB" firstAttribute="leading" secondItem="6rP-Wm-kwa" secondAttribute="leading" type="default" id="iUI-IH-MiE"/>
-                                    <constraint firstItem="vtT-sb-w1Q" firstAttribute="leading" secondItem="BAn-1S-oEv" secondAttribute="leading" type="default" id="ndY-1i-RoO"/>
+                                    <constraint firstItem="pEH-fI-rvO" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3pE-0Y-Dt5"/>
+                                    <constraint firstItem="gZg-Fb-asy" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="6" id="66x-mS-xwn"/>
+                                    <constraint firstAttribute="trailing" secondItem="YeZ-Fc-M72" secondAttribute="trailing" constant="162" id="6C9-Qr-R5E"/>
+                                    <constraint firstItem="vtT-sb-w1Q" firstAttribute="centerX" secondItem="gZg-Fb-asy" secondAttribute="centerX" type="default" id="8DG-MF-Owj"/>
+                                    <constraint firstItem="pEH-fI-rvO" firstAttribute="trailing" secondItem="0DI-6P-edh" secondAttribute="trailing" type="default" id="FtB-DJ-4Zo"/>
+                                    <constraint firstItem="YeZ-Fc-M72" firstAttribute="trailing" secondItem="Y1V-Sl-mHQ" secondAttribute="trailing" type="default" id="GT5-NG-r2i"/>
+                                    <constraint firstItem="glA-QW-M0i" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="GbU-Zt-s1h"/>
+                                    <constraint firstAttribute="bottom" secondItem="0DI-6P-edh" secondAttribute="bottom" constant="90" id="Rw7-tW-t3Q"/>
+                                    <constraint firstItem="pEH-fI-rvO" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="187" id="SHu-cf-n0d"/>
+                                    <constraint firstItem="YeZ-Fc-M72" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="317" id="WlX-tg-nOc"/>
+                                    <constraint firstItem="pEH-fI-rvO" firstAttribute="trailing" secondItem="vtT-sb-w1Q" secondAttribute="trailing" type="default" id="bh6-gn-ZbI"/>
+                                    <constraint firstItem="0DI-6P-edh" firstAttribute="top" secondItem="YeZ-Fc-M72" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gWC-5l-eFe"/>
+                                    <constraint firstItem="0DI-6P-edh" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="h4T-TJ-NF9"/>
+                                    <constraint firstItem="vtT-sb-w1Q" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="28" id="krg-lj-oY9"/>
                                     <constraint firstItem="Y1V-Sl-mHQ" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="o8x-8d-Uc4"/>
-                                    <constraint firstItem="BAn-1S-oEv" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="13" id="wri-kk-lUt"/>
-                                    <constraint firstItem="pBY-sl-9ZB" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="476" id="xtr-e3-d5z"/>
+                                    <constraint firstItem="vtT-sb-w1Q" firstAttribute="leading" secondItem="5fn-df-IDb" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="pqh-IT-vke"/>
+                                    <constraint firstItem="glA-QW-M0i" firstAttribute="top" secondItem="5fn-df-IDb" secondAttribute="top" constant="164" id="yM1-ur-Gh6"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -99,6 +94,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="image1" destination="vtT-sb-w1Q" id="w2n-nh-0uA"/>
+                        <outlet property="image2" destination="pEH-fI-rvO" id="vjM-rg-Uk0"/>
+                        <outlet property="image3" destination="0DI-6P-edh" id="3ja-2X-2DO"/>
                         <outlet property="scroller" destination="5fn-df-IDb" id="PVu-J2-IpF"/>
                     </connections>
                 </viewController>
@@ -113,6 +111,9 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="image1" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="image2" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="image3" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="scroller" candidateClass="UIScrollView"/>
             </relationships>
         </class>

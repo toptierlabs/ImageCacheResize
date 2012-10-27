@@ -11,6 +11,8 @@
 #import "SDWebImageDownloader.h"
 #import <objc/message.h>
 
+#import "UIImage+Resize.h"
+
 static SDWebImageManager *instance;
 
 @implementation SDWebImageManager
@@ -56,6 +58,38 @@ static SDWebImageManager *instance;
 
     return instance;
 }
+
+- (NSString *)cacheKeyForURL:(NSURL *)url andDictionary:(NSDictionary *) info
+{
+    NSString *transformation = [info objectForKey:@"transformation"];
+    
+    NSString *cacheKey = [self cacheKeyForURL:url];
+    if (transformation)
+    {
+        if ([transformation isEqualToString:@"crop"])
+        {
+            cacheKey = [NSString stringWithFormat:@"%@_crop_%@", [self cacheKeyForURL:url], [info objectForKey:@"bounds"]];
+        }
+        else
+        {
+            if ([transformation isEqualToString:@"resize"])
+            {
+                NSString *contentmode = [info objectForKey:@"content_mode"];
+                if (contentmode)
+                {
+                    cacheKey = [NSString stringWithFormat:@"%@_resize_%@_%@", [self cacheKeyForURL:url], [info objectForKey:@"size"], contentmode];
+                }
+                else
+                {
+                    cacheKey = [NSString stringWithFormat:@"%@_resize_%@", [self cacheKeyForURL:url], [info objectForKey:@"size"]];
+                }
+                
+            }
+        }
+    }
+    return cacheKey;
+}
+
 
 - (NSString *)cacheKeyForURL:(NSURL *)url
 {
@@ -110,6 +144,7 @@ static SDWebImageManager *instance;
     [self downloadWithURL:url delegate:delegate options:options userInfo:nil];
 }
 
+
 - (void)downloadWithURL:(NSURL *)url delegate:(id<SDWebImageManagerDelegate>)delegate options:(SDWebImageOptions)options userInfo:(NSDictionary *)userInfo
 {
     // Very common mistake is to send the URL using NSString object instead of NSURL. For some strange reason, XCode won't
@@ -131,13 +166,26 @@ static SDWebImageManager *instance;
     // Check the on-disk cache async so we don't block the main thread
     [cacheDelegates addObject:delegate];
     [cacheURLs addObject:url];
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+    NSMutableDictionary *info = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                           delegate, @"delegate",
                           url, @"url",
                           [NSNumber numberWithInt:options], @"options",
                           userInfo ? userInfo : [NSNull null], @"userInfo",
                           nil];
-    [[SDImageCache sharedImageCache] queryDiskCacheForKey:[self cacheKeyForURL:url] delegate:self userInfo:info];
+    
+    NSArray *transformationKeys = [NSArray arrayWithObjects:@"transformation", @"bounds", @"size", @"content_mode", nil];
+    
+    for (NSString *key in transformationKeys) {
+        NSString *value = [userInfo objectForKey:key];
+        if (value)
+        {
+            [info setObject:value forKey:key];
+        }
+    }
+    
+    NSString *cacheKey = [self cacheKeyForURL:url andDictionary:info];
+        
+    [[SDImageCache sharedImageCache] queryDiskCacheForKey:cacheKey delegate:self userInfo:info];
 }
 
 #if NS_BLOCKS_AVAILABLE
@@ -202,7 +250,8 @@ static SDWebImageManager *instance;
         {
             // No more delegate are waiting for this download, cancel it
             [downloader cancel];
-            [downloaderForURL removeObjectForKey:downloader.url];
+            NSString *downloaderkey = [self cacheKeyForURL:downloader.url andDictionary:downloader.userInfo];
+            [downloaderForURL removeObjectForKey:downloaderkey];
         }
 
         SDWIRelease(downloader);
@@ -229,7 +278,7 @@ static SDWebImageManager *instance;
 {
     NSURL *url = [info objectForKey:@"url"];
     id<SDWebImageManagerDelegate> delegate = [info objectForKey:@"delegate"];
-
+    
     NSUInteger idx = [self indexOfDelegate:delegate waitingForURL:url];
     if (idx == NSNotFound)
     {
@@ -282,13 +331,14 @@ static SDWebImageManager *instance;
     [cacheDelegates removeObjectAtIndex:idx];
     [cacheURLs removeObjectAtIndex:idx];
 
+    NSString *downloaderkey = [self cacheKeyForURL:url andDictionary:info];
     // Share the same downloader for identical URLs so we don't download the same URL several times
-    SDWebImageDownloader *downloader = [downloaderForURL objectForKey:url];
+    SDWebImageDownloader *downloader = [downloaderForURL objectForKey:downloaderkey];
 
     if (!downloader)
     {
         downloader = [SDWebImageDownloader downloaderWithURL:url delegate:self userInfo:info lowPriority:(options & SDWebImageLowPriority)];
-        [downloaderForURL setObject:downloader forKey:url];
+        [downloaderForURL setObject:downloader forKey:downloaderkey];
     }
     else
     {
@@ -342,6 +392,39 @@ static SDWebImageManager *instance;
 - (void)imageDownloader:(SDWebImageDownloader *)downloader didFinishWithImage:(UIImage *)image
 {
     SDWIRetain(downloader);
+    
+    
+    if ([downloader.userInfo objectForKey:@"transformation"] == @"crop")
+    {
+        CGRect bounds = CGRectFromString([downloader.userInfo objectForKey:@"bounds"]);
+        image = [image croppedImage:bounds];
+    }
+    else
+    {
+        if ([downloader.userInfo objectForKey:@"transformation"] == @"resize")
+        {
+            CGSize size = CGSizeFromString([downloader.userInfo objectForKey:@"size"]);
+            NSString *contentmode = [downloader.userInfo objectForKey:@"content_mode"];
+            if (contentmode)
+            {
+                UIViewContentMode mode = UIViewContentModeScaleAspectFit;
+                
+                if ([contentmode isEqualToString:@"UIViewContentModeScaleAspectFill"])
+                {
+                    mode = UIViewContentModeScaleAspectFill;
+                }
+                
+                image = [image resizedImageWithContentMode:mode bounds:size interpolationQuality:kCGInterpolationHigh];
+            }
+            else
+            {
+                image = [image resizedImage:size interpolationQuality:kCGInterpolationHigh];
+            }
+            
+            
+        }
+    }
+    
     SDWebImageOptions options = [[downloader.userInfo objectForKey:@"options"] intValue];
 
     // Notify all the downloadDelegates with this downloader
@@ -418,10 +501,14 @@ static SDWebImageManager *instance;
 
     if (image)
     {
+        
+        NSString *cacheKey = [self cacheKeyForURL:downloader.url andDictionary:downloader.userInfo];
+        
+        
         // Store the image in the cache
         [[SDImageCache sharedImageCache] storeImage:image
                                           imageData:downloader.imageData
-                                             forKey:[self cacheKeyForURL:downloader.url]
+                                             forKey: cacheKey
                                              toDisk:!(options & SDWebImageCacheMemoryOnly)];
     }
     else if (!(options & SDWebImageRetryFailed))
@@ -433,7 +520,8 @@ static SDWebImageManager *instance;
 
 
     // Release the downloader
-    [downloaderForURL removeObjectForKey:downloader.url];
+    NSString *downloaderkey = [self cacheKeyForURL:downloader.url andDictionary:downloader.userInfo];
+    [downloaderForURL removeObjectForKey:downloaderkey];
     SDWIRelease(downloader);
 }
 
@@ -484,7 +572,8 @@ static SDWebImageManager *instance;
     }
 
     // Release the downloader
-    [downloaderForURL removeObjectForKey:downloader.url];
+    NSString *downloaderkey = [self cacheKeyForURL:downloader.url andDictionary:downloader.userInfo];
+    [downloaderForURL removeObjectForKey:downloaderkey];
     SDWIRelease(downloader);
 }
 

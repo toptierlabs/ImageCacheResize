@@ -10,6 +10,22 @@
 
 @implementation UIImageView (WebCache)
 
+
+- (void)setImageWithURL:(NSURL *)url andCropToBounds:(CGRect)bounds
+{
+    [self setImageWithURL:url placeholderImage:nil options:0 andCropToBounds: bounds];
+}
+
+- (void)setImageWithURL:(NSURL *)url andResize:(CGSize)size
+{
+    [self setImageWithURL:url placeholderImage:nil options:0 andResize:size];
+}
+
+- (void)setImageWithURL:(NSURL *)url andResize:(CGSize)size withContentMode:(UIViewContentMode)mode
+{
+    [self setImageWithURL:url placeholderImage:nil options:0 andResize:size withContentMode:mode];
+}
+
 - (void)setImageWithURL:(NSURL *)url
 {
     [self setImageWithURL:url placeholderImage:nil];
@@ -19,6 +35,78 @@
 {
     [self setImageWithURL:url placeholderImage:placeholder options:0];
 }
+
+
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options  andCropToBounds:(CGRect)bounds;
+{
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
+    // Remove in progress downloader from queue
+    [manager cancelForDelegate:self];
+    
+    self.image = placeholder;
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"crop", @"transformation",
+                              NSStringFromCGRect(bounds), @"bounds", nil];
+    
+    if (url)
+    {
+        [manager downloadWithURL:url delegate:self options:options userInfo:userInfo];
+    }
+}
+
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options  andResize:(CGSize)size
+{
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
+    // Remove in progress downloader from queue
+    [manager cancelForDelegate:self];
+    
+    self.image = placeholder;
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"resize", @"transformation",
+                              NSStringFromCGSize(size), @"size", nil];
+    
+    if (url)
+    {
+        [manager downloadWithURL:url delegate:self options:options userInfo:userInfo];
+    }
+}
+
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options  andResize:(CGSize)size withContentMode:(UIViewContentMode)mode
+{
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    
+    // Remove in progress downloader from queue
+    [manager cancelForDelegate:self];
+    
+    self.image = placeholder;
+    
+    
+    NSString *mode_str = nil;
+    
+    if (mode == UIViewContentModeScaleAspectFit)
+    {
+        mode_str = @"UIViewContentModeScaleAspectFit";
+    }
+    else
+    {
+        if (mode == UIViewContentModeScaleAspectFill)
+        {
+            mode_str = @"UIViewContentModeScaleAspectFill";
+        }
+    }
+
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:@"resize", @"transformation",
+                              NSStringFromCGSize(size), @"size",
+                              mode_str, @"content_mode", nil];
+    
+    if (url)
+    {
+        [manager downloadWithURL:url delegate:self options:options userInfo:userInfo];
+    }
+}
+
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options
 {

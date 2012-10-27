@@ -20,7 +20,7 @@
 
 // Returns a copy of this image that is cropped to the given bounds.
 // The bounds will be adjusted using CGRectIntegral.
-// This method ignores the image's imageOrientation setting.
+// This method does not ignore the image's imageOrientation setting.
 - (UIImage *)croppedImage:(CGRect)bounds {
     CGAffineTransform txTranslate;
     CGAffineTransform txCompound;

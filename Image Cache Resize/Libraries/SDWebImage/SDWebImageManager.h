@@ -19,6 +19,7 @@ typedef enum
     SDWebImageProgressiveDownload = 1 << 3
 } SDWebImageOptions;
 
+
 #if NS_BLOCKS_AVAILABLE
 typedef void(^SDWebImageSuccessBlock)(UIImage *image, BOOL cached);
 typedef void(^SDWebImageFailureBlock)(NSError *error);
@@ -92,6 +93,8 @@ typedef NSString *(^CacheKeyFilter)(NSURL *url);
  */
 - (void)downloadWithURL:(NSURL *)url delegate:(id<SDWebImageManagerDelegate>)delegate;
 
+
+
 /**
  * Downloads the image at the given URL if not present in cache or return the cached version otherwise.
  *
@@ -102,6 +105,8 @@ typedef NSString *(^CacheKeyFilter)(NSURL *url);
  * @see [SDWebImageManager downloadWithURL:delegate:options:userInfo:success:failure:]
  */
 - (void)downloadWithURL:(NSURL *)url delegate:(id<SDWebImageManagerDelegate>)delegate options:(SDWebImageOptions)options;
+
+
 
 /**
  * Downloads the image at the given URL if not present in cache or return the cached version otherwise.

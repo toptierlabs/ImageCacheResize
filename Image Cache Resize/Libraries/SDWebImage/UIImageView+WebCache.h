@@ -44,6 +44,41 @@
  */
 @interface UIImageView (WebCache) <SDWebImageManagerDelegate>
 
+
+/**
+ * Set the imageView `image` with an `url`.
+ *
+ * The downloand is asynchronous and cached. After the image is downloaded the result image is cropped.
+ *
+ * @param url The url for the image.
+ * @param bounds Bounds of the cropped image.
+ */
+- (void)setImageWithURL:(NSURL *)url andCropToBounds:(CGRect)bounds;
+
+
+/**
+ * Set the imageView `image` with an `url`.
+ *
+ * The downloand is asynchronous and cached. After the image is downloaded the result image is cropped.
+ *
+ * @param url The url for the image.
+ * @param size Resize the downloaded image to the specified size
+ */
+- (void)setImageWithURL:(NSURL *)url andResize:(CGSize)size;
+
+/**
+ * Set the imageView `image` with an `url`.
+ *
+ * The downloand is asynchronous and cached. After the image is downloaded the result image is cropped.
+ *
+ * @param url The url for the image.
+ * @param bounds Bounds of the cropped image.
+ * @param size Resize the downloaded image to the specified size
+ * @param mode Content mode of the resize strategy. Can be UIViewContentModeScaleAspectFill or UIViewContentModeScaleAspectFit
+ */
+- (void)setImageWithURL:(NSURL *)url andResize:(CGSize)size withContentMode:(UIViewContentMode)mode;
+
+
 /**
  * Set the imageView `image` with an `url`.
  *
@@ -52,6 +87,49 @@
  * @param url The url for the image.
  */
 - (void)setImageWithURL:(NSURL *)url;
+
+
+
+/**
+ * Set the imageView `image` with an `url` and a placeholder.
+ *
+ * The downloand is asynchronous and cached. After the image is downloaded the result image is cropped.
+ *
+ * @param url The url for the image.
+ * @param placeholder The image to be set initially, until the image request finishes.
+ * @param bounds Bounds of the cropped image.
+ * @see setImageWithURL:placeholderImage:options:andCropToBounds:
+ */
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder andCropToBounds:(CGRect)bounds;
+
+
+
+/**
+ * Set the imageView `image` with an `url` and a placeholder.
+ *
+ * The downloand is asynchronous and cached. After the image is downloaded the result image is cropped.
+ *
+ * @param url The url for the image.
+ * @param placeholder The image to be set initially, until the image request finishes.
+ * @param size Resize the downloaded image to the specified size
+ * @see setImageWithURL:placeholderImage:options:andResize:
+ */
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options  andResize:(CGSize)size;
+
+/**
+ * Set the imageView `image` with an `url` and a placeholder.
+ *
+ * The downloand is asynchronous and cached. After the image is downloaded the result image is cropped.
+ *
+ * @param url The url for the image.
+ * @param placeholder The image to be set initially, until the image request finishes.
+ * @param size Resize the downloaded image to the specified size
+ * @param mode Content mode of the resize strategy. Can be UIViewContentModeScaleAspectFill or UIViewContentModeScaleAspectFit
+ * @see setImageWithURL:placeholderImage:options:andResize:withContentMode:
+ */
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options  andResize:(CGSize)size withContentMode:(UIViewContentMode)mode;
+
+
 
 /**
  * Set the imageView `image` with an `url` and a placeholder.
@@ -63,6 +141,20 @@
  * @see setImageWithURL:placeholderImage:options:
  */
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder;
+
+
+/**
+ * Set the imageView `image` with an `url`, placeholder and custom options.
+ *
+ * The downloand is asynchronous and cached. After the image is downloaded the result image is cropped.
+ *
+ * @param url The url for the image.
+ * @param placeholder The image to be set initially, until the image request finishes.
+ * @param options The options to use when downloading the image. @see SDWebImageOptions for the possible values.
+ * @param bounds Bounds of the cropped image.
+ */
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options  andCropToBounds:(CGRect)bounds;
+
 
 /**
  * Set the imageView `image` with an `url`, placeholder and custom options.
