@@ -24,20 +24,48 @@
        containerWidth: (float)container_width
       containerHeight: (float) container_height{
     
-    float image_ratio = container_height/ container_width;
+    float container_ratio = container_height/ container_width;
+    float image_ratio = image_height/ image_width;
     float crop_width, crop_height;
-    if (image_width / image_ratio > image_height)
+    
+    if (container_ratio < image_ratio)
     {
-        // crop width
-        crop_height = image_height;
-        crop_width = image_height / image_ratio;
+        // Crop height
+        crop_width = image_width;
+        crop_height = image_width * container_ratio;
+        
+        /*
+         if (image_width / image_ratio > image_height)
+         {
+         // crop width
+         crop_height = image_height;
+         crop_width = image_height / image_ratio;
+         }
+         else
+         {
+         // crop height
+         crop_width = image_width;;
+         crop_height = image_width / image_ratio;
+         
+         }*/
     }
     else
     {
-        // crop height
-        crop_width = image_width;;
-        crop_height = image_width / image_ratio;
-        
+        crop_height = image_height;
+        crop_width = image_height / container_ratio;
+        /*if (image_width / image_ratio > image_height)
+         {
+         // crop width
+         crop_height = image_height;
+         crop_width = image_height / image_ratio;
+         }
+         else
+         {
+         // crop height
+         crop_width = image_width;;
+         crop_height = image_width * image_ratio;
+         
+         }*/
     }
     
     return CGSizeMake(crop_width, crop_height);

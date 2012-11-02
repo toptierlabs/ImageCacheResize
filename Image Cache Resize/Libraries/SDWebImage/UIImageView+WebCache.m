@@ -36,6 +36,10 @@
     [self setImageWithURL:url placeholderImage:placeholder options:0];
 }
 
+-(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder andCropToBounds:(CGRect)bounds{
+    [self setImageWithURL:url placeholderImage:nil options:0 andCropToBounds: bounds];
+}
+
 
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options  andCropToBounds:(CGRect)bounds;
 {
