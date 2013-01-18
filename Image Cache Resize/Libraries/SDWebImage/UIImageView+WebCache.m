@@ -10,6 +10,12 @@
 
 @implementation UIImageView (WebCache)
 
+- (CGSize)doubleSizeIfRetina:(CGSize) size
+{
+    BOOL isRetina = ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] && [[UIScreen mainScreen] scale] == 2);
+    size = isRetina ? CGSizeMake(size.width *2, size.height *2) : size;
+    return size;
+}
 
 - (void)setImageWithURL:(NSURL *)url andCropToBounds:(CGRect)bounds
 {
@@ -18,11 +24,13 @@
 
 - (void)setImageWithURL:(NSURL *)url andResize:(CGSize)size
 {
+    size = [self doubleSizeIfRetina:size];
     [self setImageWithURL:url placeholderImage:nil options:0 andResize:size];
 }
 
 - (void)setImageWithURL:(NSURL *)url andResize:(CGSize)size withContentMode:(UIViewContentMode)mode
 {
+    size = [self doubleSizeIfRetina:size];
     [self setImageWithURL:url placeholderImage:nil options:0 andResize:size withContentMode:mode];
 }
 
