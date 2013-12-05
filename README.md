@@ -53,3 +53,7 @@ Here are some examples using images in google:
 
 
 This project include some examples. Just clone and execute it.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/toptierlabs/imagecacheresize/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
